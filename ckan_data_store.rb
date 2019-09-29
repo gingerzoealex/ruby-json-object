@@ -13,11 +13,18 @@ class CkanDataStore
     obj = JSON.parse(response)
     data_hash = JSON.parse(response)
     @data = []
-    @hash_object = data_hash['result'][0]['data']['package']
-
+    # puts "______"
+    # keys =  @hash_object.keys
+    # puts keys
+    # puts @hash_object.values()
+    count = 0
     obj.each do |hash|
+      puts "looping x#{count}"
+      @hash_object = obj['result'][count]['data']['package']
       @data << @hash_object
+      count += 1
     end
+    # puts @hash_object.class
     puts @hash_object
 
     update_input_file
@@ -39,7 +46,7 @@ class CkanDataStore
     if name == ""
       puts @hash_object
     elsif
-      # output =  @hash_object.each_key {|name|}
+      # output =  @hash_object.value?(name)
       output =  @hash_object
       puts output
     end
@@ -67,5 +74,3 @@ class CkanDataStore
 
 end # end of class
 
-data = CkanDataStore.new()
-puts "Getting data"

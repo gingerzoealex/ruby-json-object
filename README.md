@@ -7,6 +7,6 @@ To install dependency Gems:
 `sudo apt-get install rest-client`
 
 To run the program from the command line
-`ruby ckan_data_store.rb`
+`ruby playing_with_data.rb`
 
 
