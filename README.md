@@ -1,4 +1,4 @@
-For this challenge I decided to give Ruby a go. To get up to speed I followed the documentation, starting with https://www.ruby-lang.org/en/documentation/quickstart/ this tutorial. 
+For this challenge I decided to give Ruby a go. To get up to speed I followed the documentation, starting with https://www.ruby-lang.org/en/documentation/quickstart/
 
 To install ruby:
 `sudo apt-get install ruby-full`
