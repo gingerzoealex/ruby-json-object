@@ -39,25 +39,17 @@ class CkanDataStore
     create_response
     @dataset_name = dataset_name
     @datatset_title = dataset_title
- 
+
   end
 
-  def get(*input)
+  def get(input=nil)
     # puts JSON.pretty_generate(@hash_object.fetch(id))
-    if input !=1
-      puts JSON.pretty_generate(@hash_object.fetch(input))
-      puts "If bloock"
-      # puts JSON.pretty_generate(@hash_object)
+    if input.is_a?(Integer)
+      puts "Checking at index #{input}"
+      puts JSON.pretty_generate(@hash_object.at(input))
     else
-      puts "____________ \nChecking for index #{input}"
-      # puts "Checking at index #{id}"
-      # puts "Else block"
-
-      puts JSON.pretty_generate(@hash_object.fetch(input))
-
-      # puts JSON.pretty_generate(@hash_object.fetch(id))
-      # 50a0f2ce-d93b-4f94-86b9-b1d183dcd447
-      # puts @hash_object.index(id)
+      puts "Showing all objects"
+      puts JSON.pretty_generate(@hash_object)
     end
 
   end
@@ -72,16 +64,16 @@ class CkanDataStore
     #update an object
   end
 
-  def delete(key = 'key')
+  def delete(id)
     # delete an object
-    @hash_object.delete(key)
+    @hash_object.delete(id)
   end
 
   def update_input_file
     File.open('./input.json', 'w') do |f|
       f.write(@hash_object)
     end
-  
+
   end
 
 end # end of class
