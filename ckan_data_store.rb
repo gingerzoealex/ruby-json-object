@@ -20,18 +20,13 @@ class CkanDataStore
     puts "Object created: "
     puts @hash_object.class
     puts data.class
-    # output_hash_object
-    # puts JSON.pretty_generate(@hash_object.fetch(1))
 
-
-    # update_input_file
+    update_input_file
 
   end
 
   def output_hash_object
-    # @hash_object.each_index { print @ , " -- " }
     @hash_object.each_index { puts JSON.pretty_generate(@hash_object) }
-      # puts @hash_object[index]
   end
 
   def initialize(dataset_name = "dataset name", dataset_title = "dataset title")
@@ -45,11 +40,11 @@ class CkanDataStore
   def get(input=nil)
     # puts JSON.pretty_generate(@hash_object.fetch(id))
     if input.is_a?(Integer)
-      puts "Checking at index #{input}"
+      puts "Object at index [#{input}]"
       puts JSON.pretty_generate(@hash_object.at(input))
     else
       puts "Showing all objects"
-      puts JSON.pretty_generate(@hash_object)
+      output_hash_object
     end
 
   end
@@ -66,6 +61,8 @@ class CkanDataStore
 
   def delete(id)
     # delete an object
+    puts get(id)
+    puts "DELETING ITEM"
     @hash_object.delete(id)
   end
 

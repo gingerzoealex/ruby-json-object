@@ -8,7 +8,10 @@ if __FILE__ == $0
   input_int = 4
   input_double = 1.7
   # puts data.get(input_double)
-  puts data.get(input_int)
+  # puts data.get(input_int)
+  
+  data.delete(4)
+  # puts data.count
   # puts data.get
 
 end
