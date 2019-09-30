@@ -12,23 +12,26 @@ class CkanDataStore
 
     obj = JSON.parse(response)
     data_hash = JSON.parse(response)
-    @data = []
-    # puts "______"
-    # keys =  @hash_object.keys
-    # puts keys
-    # puts @hash_object.values()
-    count = 0
-    obj.each do |hash|
-      puts "looping x#{count}"
-      @hash_object = obj['result'][count]['data']['package']
-      @data << @hash_object
-      count += 1
-    end
-    # puts @hash_object.class
-    puts @hash_object
+    @data = Hash.new("respsonse")
+    # puts "loop x#{count}"
+    @hash_object = obj['result']
+    @data = @hash_object
+    # set the ID to the index?
+    puts "Object created: "
+    puts @hash_object.class
+    puts data.class
+    # output_hash_object
+    # puts JSON.pretty_generate(@hash_object.fetch(1))
 
-    update_input_file
 
+    # update_input_file
+
+  end
+
+  def output_hash_object
+    # @hash_object.each_index { print @ , " -- " }
+    @hash_object.each_index { puts JSON.pretty_generate(@hash_object) }
+      # puts @hash_object[index]
   end
 
   def initialize(dataset_name = "dataset name", dataset_title = "dataset title")
@@ -39,30 +42,39 @@ class CkanDataStore
  
   end
 
-  def get(*name)
-  
-    puts "__"
+  def get(*input)
+    # puts JSON.pretty_generate(@hash_object.fetch(id))
+    if input !=1
+      puts JSON.pretty_generate(@hash_object.fetch(input))
+      puts "If bloock"
+      # puts JSON.pretty_generate(@hash_object)
+    else
+      puts "____________ \nChecking for index #{input}"
+      # puts "Checking at index #{id}"
+      # puts "Else block"
 
-    if name == ""
-      puts @hash_object
-    elsif
-      # output =  @hash_object.value?(name)
-      output =  @hash_object
-      puts output
+      puts JSON.pretty_generate(@hash_object.fetch(input))
+
+      # puts JSON.pretty_generate(@hash_object.fetch(id))
+      # 50a0f2ce-d93b-4f94-86b9-b1d183dcd447
+      # puts @hash_object.index(id)
     end
 
   end
 
-  def post
+  def post(new_object_data)
     # create a new object
+    new_object = []
+    @data_store << new_object
   end
 
   def put
     #update an object
   end
 
-  def delete
+  def delete(key = 'key')
     # delete an object
+    @hash_object.delete(key)
   end
 
   def update_input_file
